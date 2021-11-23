@@ -140,7 +140,6 @@ md" ## $t_n$ = 7"
 html"""
 <img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/t7.png?raw=true" height=450 width=900>"""
 
-
 # ╔═╡ 57a4efac-8feb-4ad2-8bce-61af0d0ce4ab
 md" ## $t_n$ = 10"
 
