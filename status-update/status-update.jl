@@ -109,8 +109,45 @@ end
 md" 
 ## Inferenec Results"
 
+# ╔═╡ a32c5152-0d87-4268-a9c1-f6f4a62fdbaf
+md" ## $t_n$ = 1"
+
 # ╔═╡ 4a198c19-6d22-4cf4-aed2-b66b72d37e78
-LocalResource("../status-update/images/t1.png")
+html"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/t1.png?raw=true" height=450 width=900>"""
+
+
+# ╔═╡ 94a8cf89-a486-498d-b086-b53fd0ff932c
+md" ## $t_n$ = 3"
+
+# ╔═╡ 247156ef-cb41-48d7-b414-82754b83c8b9
+html"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/t3.png?raw=true" height=450 width=900>"""
+
+
+# ╔═╡ db0999a4-9a43-4d11-83b2-d12eda6617a4
+md" ## $t_n$ = 5"
+
+# ╔═╡ 9864965d-6341-4fe2-a1ab-a25795ae4af7
+html"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/t5.png?raw=true" height=450 width=900>"""
+
+
+# ╔═╡ 9f7c884f-4e9e-43d5-95ae-8b0b09d257cb
+md" ## $t_n$ = 7"
+
+# ╔═╡ 78e34b2f-3a50-40be-a1ac-065a80c324df
+html"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/t7.png?raw=true" height=450 width=900>"""
+
+
+# ╔═╡ 57a4efac-8feb-4ad2-8bce-61af0d0ce4ab
+md" ## $t_n$ = 10"
+
+# ╔═╡ 40b1086b-a52b-47fe-b9bb-a88f6fb677d9
+html"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/t10.png?raw=true" height=450 width=900>"""
+
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1236,6 +1273,15 @@ version = "0.9.1+5"
 # ╠═d2861fa9-754d-4887-82d9-60da4b8416d7
 # ╟─521f391c-ca06-4841-a7ac-45ec47025f1f
 # ╟─e0ebf820-62a1-49e7-87e0-057d07223934
-# ╠═4a198c19-6d22-4cf4-aed2-b66b72d37e78
+# ╟─a32c5152-0d87-4268-a9c1-f6f4a62fdbaf
+# ╟─4a198c19-6d22-4cf4-aed2-b66b72d37e78
+# ╟─94a8cf89-a486-498d-b086-b53fd0ff932c
+# ╟─247156ef-cb41-48d7-b414-82754b83c8b9
+# ╟─db0999a4-9a43-4d11-83b2-d12eda6617a4
+# ╟─9864965d-6341-4fe2-a1ab-a25795ae4af7
+# ╟─9f7c884f-4e9e-43d5-95ae-8b0b09d257cb
+# ╟─78e34b2f-3a50-40be-a1ac-065a80c324df
+# ╟─57a4efac-8feb-4ad2-8bce-61af0d0ce4ab
+# ╠═40b1086b-a52b-47fe-b9bb-a88f6fb677d9
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
