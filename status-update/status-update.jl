@@ -53,7 +53,7 @@ md"
 # ╔═╡ d0e21993-c26a-4e3c-b6c8-e08072dc105f
 md" 
 Problems: 
-* Given some data from $t = t_0$, can we infer initial conditions at $t = t_{0 - n}$? 
+* Given some data from $t = t_0+n$, can we infer initial conditions at $t = t_{0}$? 
 * Does identifiability vary given connectome topology"
 
 # ╔═╡ a93d05ba-c863-48fc-864a-f1cc5f35c23e
@@ -1269,17 +1269,17 @@ version = "0.9.1+5"
 # ╟─a48eb12b-cabe-4b08-9372-273b70909938
 # ╟─8187070b-56d6-4ab5-9d64-fb41bc4440c8
 # ╟─ceb96cfa-212f-41ba-afdc-beac85380fd8
-# ╠═d2861fa9-754d-4887-82d9-60da4b8416d7
+# ╟─d2861fa9-754d-4887-82d9-60da4b8416d7
 # ╟─521f391c-ca06-4841-a7ac-45ec47025f1f
 # ╟─e0ebf820-62a1-49e7-87e0-057d07223934
 # ╟─a32c5152-0d87-4268-a9c1-f6f4a62fdbaf
-# ╠═4a198c19-6d22-4cf4-aed2-b66b72d37e78
+# ╟─4a198c19-6d22-4cf4-aed2-b66b72d37e78
 # ╟─94a8cf89-a486-498d-b086-b53fd0ff932c
 # ╟─247156ef-cb41-48d7-b414-82754b83c8b9
 # ╟─db0999a4-9a43-4d11-83b2-d12eda6617a4
 # ╟─9864965d-6341-4fe2-a1ab-a25795ae4af7
 # ╟─9f7c884f-4e9e-43d5-95ae-8b0b09d257cb
-# ╠═78e34b2f-3a50-40be-a1ac-065a80c324df
+# ╟─78e34b2f-3a50-40be-a1ac-065a80c324df
 # ╟─57a4efac-8feb-4ad2-8bce-61af0d0ce4ab
 # ╟─40b1086b-a52b-47fe-b9bb-a88f6fb677d9
 # ╟─00000000-0000-0000-0000-000000000001
