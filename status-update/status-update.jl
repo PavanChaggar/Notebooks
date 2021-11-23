@@ -146,7 +146,7 @@ md" ## $t_n$ = 10"
 
 # ╔═╡ 40b1086b-a52b-47fe-b9bb-a88f6fb677d9
 html"""
-<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/t10.png?raw=true" height=450 width=900>"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/tall.png?raw=true" height=450 width=900>"""
 
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -1280,8 +1280,8 @@ version = "0.9.1+5"
 # ╟─db0999a4-9a43-4d11-83b2-d12eda6617a4
 # ╟─9864965d-6341-4fe2-a1ab-a25795ae4af7
 # ╟─9f7c884f-4e9e-43d5-95ae-8b0b09d257cb
-# ╟─78e34b2f-3a50-40be-a1ac-065a80c324df
+# ╠═78e34b2f-3a50-40be-a1ac-065a80c324df
 # ╟─57a4efac-8feb-4ad2-8bce-61af0d0ce4ab
-# ╠═40b1086b-a52b-47fe-b9bb-a88f6fb677d9
+# ╟─40b1086b-a52b-47fe-b9bb-a88f6fb677d9
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
