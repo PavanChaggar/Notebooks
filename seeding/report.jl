@@ -4,69 +4,22 @@
 using Markdown
 using InteractiveUtils
 
+# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
+macro bind(def, element)
+    quote
+        local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
+        local el = $(esc(element))
+        global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
+        el
+    end
+end
+
 # ╔═╡ 98b376ef-dc4d-4bc3-9daa-7e47a36e0ad8
 using PlutoUI, Plots, Distributions, StatsPlots
 
 # ╔═╡ 13720208-4c45-11ec-0d81-ed5bee4a4b1a
 md" 
 # Update"
-
-# ╔═╡ 678d201b-0cc3-4614-8f1e-b299cb3384e2
-md" 
-## Hierarchical Inference: PET and sMRI"
-
-# ╔═╡ 362a57e1-545e-4f65-a720-37b81ebe29c5
-md"""
-We infer a coupled model of FKPP and atrophy: 
-
-> $\frac{d c_i}{d t} = -\rho \sum_{j=1}^{N}{L}_{ij}c_i + \alpha c_{i} ( 1 - c_{i} )$
-> $\frac{\text{d}q_i}{\text{d}t} = G_c c_i( 1 - q_i )$
-"""
-
-# ╔═╡ 2e0d94d4-edcb-42bd-9419-64c2588c6b6c
-md"
-## Inference Results"
-
-# ╔═╡ be5c8aff-aa10-40b2-b283-eb51aae0df66
-md" 
-We use hierarchical priors on all model parameters, $\rho$, $\alpha$, $G_c$. We have the following model structure:
-
-```math
-\begin{align}
-\sigma_{t} &\sim \Gamma^{-1}(2, 3) \\
-\sigma_{a} &\sim \Gamma^{-1}(2, 3) \\
-\\
-\rho_{\mu} &\sim \mathcal{N}^{+}(0, 1) \\
-\rho_{\sigma} &\sim \mathcal{N}^{+}(0, 1) \\
-\\
-\alpha_{\mu} &\sim \mathcal{N}(0, 1) \\
-\alpha_{\sigma} &\sim \mathcal{N}^{+}(0, 1) \\
-\\
-\beta_{\mu} &\sim \mathcal{N}^{+}(0, 1) \\
-\beta_{\sigma} &\sim \mathcal{N}^{+}(0, 1) \\
-\\
-\rho_i &\sim \mathcal{N}^{+}(\rho_{\mu}, \rho_{\sigma}) \\
-\alpha_i &\sim \mathcal{N}(\alpha_{\mu}, \alpha_{\sigma}) \\
-\beta_i &\sim \mathcal{N}^{+}(\beta_{\mu}, \beta_{\sigma}) \\
-\\
-y^{tau}_i &\sim \mathcal{N}(f(\mathbf{u}, t, \{\rho_i, \alpha_i, \beta_i\}), \sigma_{t}) \\
-y^{atr}_i &\sim \mathcal{N}(f(\mathbf{u}, t, \{\rho_i, \alpha_i, \beta_i\}), \sigma_{a})\end{align}
-```
-for $i \in 1\ldots N$ subjects. Notice that we assume the same noise distribution
-across all subjects. Initial tests with independent noise for each subject showed 
-poor convergence. Identical noise for each subjects does not account for subject movement in scanners or differences in scanner hardware and protocols. 
-The hierarchical distributions for transport and growth are consistent with
-those reported in previous studies. There are clear differences in the hierarchical distributions for atrophy between the AB+ groups and the AB- groups, with the latter having a lower density around smaller values and a wider tail. This is reflected in the subject-specific distributions, which show a significantly greater portion of posterior distributions away from 0 for AB+ compared to Ab-.
-"
-
-# ╔═╡ 9552fe74-5fe0-405d-8953-47761ec5e376
-LocalResource("../status-update/images/transport.png")
-
-# ╔═╡ ab69832b-a43c-4ef4-b02f-cb8839ec1525
-LocalResource("../status-update/images/growth.png")
-
-# ╔═╡ cd0cd736-3b84-4bfe-a9dc-ae1cc5d4fcc5
-LocalResource("../status-update/images/atrophy.png")
 
 # ╔═╡ a7789066-0fa6-4133-ae1f-5a0dc92eecad
 md" 
@@ -88,10 +41,9 @@ for $\sigma \in \{0, 0.02, 0.05, 0.1\}$.
 " 
 
 # ╔═╡ a93d05ba-c863-48fc-864a-f1cc5f35c23e
-LocalResource("../status-update/images/fsl-pit-slow.png")
+html"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/fkpp-ec/fsl-pit-slow.png?raw=true" height=450 width=900>"""
 
-# ╔═╡ a48eb12b-cabe-4b08-9372-273b70909938
-LocalResource("../status-update/images/fsl-pit-avg-slow.png")
 
 # ╔═╡ 8187070b-56d6-4ab5-9d64-fb41bc4440c8
 md" 
@@ -119,6 +71,25 @@ The full generative process is then defined as:
 ```
 "
 
+# ╔═╡ 4d3a8387-f75f-433f-a6c0-c85c97f5d3b5
+md"
+τ = $(@bind τ Slider(0.1:0.1:10, show_value=true, default=1.0))
+"
+
+# ╔═╡ 2bbf55fa-c6ba-47d7-b3b6-2c5240be6dbf
+begin 
+function horseshoe(τ₀)
+    τ = truncated(Cauchy(0, τ₀), 0, Inf) |> rand
+    λ = truncated(Cauchy(0, 1), 0, Inf) |> rand
+    β = truncated(Normal(0, τ * λ), 0, 10) |> rand
+end
+samples = Vector{Float64}(undef, 10_000) 
+[samples[i] = horseshoe(τ) for i in 1:10_000]
+plot(;xlims=(0,5))
+histogram!(rand(Normal(), 10_000), label="Normal", bins = 50, alpha=0.5)
+histogram!(samples, label="Horseshoe", bins=50, alpha=0.5)
+end
+
 # ╔═╡ e0ebf820-62a1-49e7-87e0-057d07223934
 md" 
 ## Inference Results
@@ -126,10 +97,6 @@ md"
 
 # ╔═╡ 800cc590-e688-4618-a5e4-19c30aa6e9dd
 md"## Entorhinal Seeding"
-
-# ╔═╡ a32c5152-0d87-4268-a9c1-f6f4a62fdbaf
-md" ### $t_{n = 1}$
-For $n = 1$ and $n = 3$, the locations of the initial conditions are identified for all noise levels using the FSL and PIT connectomes. However, in both cases, posteriors are broader for the PIT connectome than the FSL connectome at higher noise levels (0.05 and 0.1)."
 
 # ╔═╡ 4a198c19-6d22-4cf4-aed2-b66b72d37e78
 html"""
@@ -1337,22 +1304,15 @@ version = "0.9.1+5"
 # ╔═╡ Cell order:
 # ╟─98b376ef-dc4d-4bc3-9daa-7e47a36e0ad8
 # ╟─13720208-4c45-11ec-0d81-ed5bee4a4b1a
-# ╟─678d201b-0cc3-4614-8f1e-b299cb3384e2
-# ╟─362a57e1-545e-4f65-a720-37b81ebe29c5
-# ╟─2e0d94d4-edcb-42bd-9419-64c2588c6b6c
-# ╟─be5c8aff-aa10-40b2-b283-eb51aae0df66
-# ╟─9552fe74-5fe0-405d-8953-47761ec5e376
-# ╟─ab69832b-a43c-4ef4-b02f-cb8839ec1525
-# ╟─cd0cd736-3b84-4bfe-a9dc-ae1cc5d4fcc5
 # ╟─a7789066-0fa6-4133-ae1f-5a0dc92eecad
 # ╟─d0e21993-c26a-4e3c-b6c8-e08072dc105f
 # ╟─a93d05ba-c863-48fc-864a-f1cc5f35c23e
-# ╟─a48eb12b-cabe-4b08-9372-273b70909938
 # ╟─8187070b-56d6-4ab5-9d64-fb41bc4440c8
 # ╟─ceb96cfa-212f-41ba-afdc-beac85380fd8
+# ╟─4d3a8387-f75f-433f-a6c0-c85c97f5d3b5
+# ╟─2bbf55fa-c6ba-47d7-b3b6-2c5240be6dbf
 # ╟─e0ebf820-62a1-49e7-87e0-057d07223934
 # ╟─800cc590-e688-4618-a5e4-19c30aa6e9dd
-# ╟─a32c5152-0d87-4268-a9c1-f6f4a62fdbaf
 # ╟─4a198c19-6d22-4cf4-aed2-b66b72d37e78
 # ╟─94a8cf89-a486-498d-b086-b53fd0ff932c
 # ╟─247156ef-cb41-48d7-b414-82754b83c8b9
