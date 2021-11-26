@@ -100,7 +100,7 @@ md"## Entorhinal Seeding"
 
 # ╔═╡ 4a198c19-6d22-4cf4-aed2-b66b72d37e78
 html"""
-<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/seeding-ec/t1.png?raw=true" height=450 width=900>"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/seeding/images/seeding-ec/t1.png?raw=true" height=300 width=900>"""
 
 
 # ╔═╡ 94a8cf89-a486-498d-b086-b53fd0ff932c
@@ -108,48 +108,43 @@ md" ### $t_{n = 3}$"
 
 # ╔═╡ 247156ef-cb41-48d7-b414-82754b83c8b9
 html"""
-<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/seeding-ec/t3.png?raw=true" height=450 width=900>"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/seeding/images/seeding-ec/t3.png?raw=true" height=300 width=900>"""
 
 
 # ╔═╡ db0999a4-9a43-4d11-83b2-d12eda6617a4
-md" ### $t_{n = 5}$
-
-At $n = 5$, the locations of initial seeding are located in the PIT connectome but not the FSL connectome, again with high for high noise levels. In the FSL connectome, the left EC is identified in all noise cases; the right EC is identified in all but noise = 0.05."
+md" ### $t_{n = 5}$"
 
 # ╔═╡ 9864965d-6341-4fe2-a1ab-a25795ae4af7
 html"""
-<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/seeding-ec/t5.png?raw=true" height=450 width=900>"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/seeding/images/seeding-ec/t5.png?raw=true" height=300 width=900>"""
 
 
 # ╔═╡ 9f7c884f-4e9e-43d5-95ae-8b0b09d257cb
-md" ### $t_{n = 7}$
-At $n = 7$, the initial conditions are poorly identified in the FSL connectome. At low noise levels, initial conditions are identified well in the PIT connectome, but at higher noise levels there is substantial uncertainty."
+md" ### $t_{n = 7}$"
 
 # ╔═╡ 78e34b2f-3a50-40be-a1ac-065a80c324df
 html"""
-<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/seeding-ec/t7.png?raw=true" height=450 width=900>"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/seeding/images/seeding-ec/t7.png?raw=true" height=300 width=900>"""
 
 # ╔═╡ 57a4efac-8feb-4ad2-8bce-61af0d0ce4ab
-md" ### $t_{n = 10}$
-
-At $n = 10$, initial conditions are not identifiable in either the FSL or PIT connectome."
+md" ### $t_{n = 10}$"
 
 # ╔═╡ 40b1086b-a52b-47fe-b9bb-a88f6fb677d9
 html"""
-<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/seeding-ec/tall.png?raw=true" height=450 width=900>"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/seeding/images/seeding-ec/tall.png?raw=true" height=300 width=900>"""
 
 
 # ╔═╡ ff37182b-12b7-4f6d-a72d-ac1601dbbe36
 md"
 ## Random Seeding
 
-In the following experiments, I test the identifiability of 8 random initial seeds given different time intervals $t_n$. As before, data is generated with an FKPP simulation with $\rho = 0.5$ and $\alpha = 1.5$. Initial seedings sites are selected randomly and are the same for all tests. Given the poor identifiability of the EC at $n = 7$ and $n = 10$, results for these are not shown for this test case. Similarly to simulating with seeding in the EC, the trajectories on the FSL connectome are slower and more progressive. 
+In the following experiments, I test the identifiability of 8 random initial seeds given different time intervals $t_n$. As before, data is generated with an FKPP simulation with $\rho = 0.5$ and $\alpha = 1.5$. Initial seedings sites are selected randomly and are the same for all tests. Given the poor identifiability of the EC at $n = 7$ and $n = 10$, results for these are not shown for this test case.
 " 
 
 
 # ╔═╡ 6d56effc-f1b3-4500-b4e4-784eac6ffecb
 html"""
-<img src="https://github.com/PavanChaggar/Notebooks/blob/main/status-update/images/fkpp-ric/fsl-pit-slow.png?raw=true" height=450 width=900>"""
+<img src="https://github.com/PavanChaggar/Notebooks/blob/main/seeding/images/fkpp-ric/fsl-pit-slow.png?raw=true" height=350 width=900>"""
 
 
 # ╔═╡ 00614b43-eb12-4562-9ec4-b9aab372f920
